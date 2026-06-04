@@ -1,0 +1,96 @@
+/* Base Mobile Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0; /* Slightly more breathing room */
+  position: relative; 
+  z-index: 50; /* Ensures navbar stays on top of other content */
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: -0.5px; /* A modern typography touch */
+}
+
+/* Upgraded Hamburger Button */
+.hamburger {
+  background: var(--accent-light); /* Soft background for the button */
+  border: none;
+  color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px; /* Soft rounded corners */
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.hamburger:hover {
+  background-color: #ddd6fe; /* Slightly darker pastel on hover */
+}
+
+/* Upgraded Mobile Dropdown */
+.nav-links {
+  list-style: none;
+  display: none; 
+  flex-direction: column;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%;
+  background-color: var(--surface-color); /* Pure white contrast */
+  padding: 1rem;
+  gap: 0.5rem; /* Tighter gap for the new pill-style links */
+  text-align: center;
+  border-radius: 12px; /* Softer, larger radius */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+}
+
+.nav-links.open {
+  display: flex; 
+}
+
+/* Modern "Pill" Link Styling */
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: 8px; /* Pill shape */
+  transition: all 0.2s ease;
+  display: block; /* Makes the whole pill clickable */
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+  background-color: var(--accent-light); /* Soft pastel background fill */
+}
+
+/* --- THE BREAKPOINT --- */
+@media (min-width: 768px) {
+  .hamburger {
+    display: none; 
+  }
+  
+  .nav-links {
+    display: flex; 
+    flex-direction: row; 
+    position: static; 
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none; /* Remove mobile shadow */
+    gap: 0.5rem; /* Horizontal space between pills */
+  }
+  
+  .nav-links a {
+    display: inline-block;
+  }
+}

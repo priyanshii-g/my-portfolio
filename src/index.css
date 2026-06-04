@@ -1,0 +1,15 @@
+:root {
+  --bg-color: #fdfbfb; /* Very soft, warm off-white */
+  --surface-color: #ffffff; /* Pure white for cards/sections */
+  --text-primary: #334155; /* Soft dark slate instead of harsh black */
+  --text-secondary: #64748b; /* Muted gray for readable paragraphs */
+  --accent-color: #8b5cf6; /* Modern pastel purple */
+  --accent-light: #ede9fe; /* Very light purple for subtle hover backgrounds */
+  --spacing-base: 1rem;
+}
+
+/* Ensure the body takes the new background */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}

@@ -1,0 +1,233 @@
+/* --- SECTION LAYOUT --- */
+.hobbies-section {
+  padding: 5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* Traps the dots inside this section */
+  overflow: hidden;
+}
+
+.hobbies-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hobbies-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.hobbies-header, .hobbies-content {
+  position: relative;
+  z-index: 10; 
+}
+
+.hobbies-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.hobbies-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* --- THE PHILOSOPHY CARD --- */
+/* --- THE PHILOSOPHY CARD (WITH 3D SHIMMER) --- */
+.philosophy-card {
+  position: relative;
+  overflow: hidden; /* Keeps the sweeping shine contained inside the card borders */
+  background-color: var(--surface-color);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  
+  /* Vibrant top border matching your established palette style */
+  border-top: 5px solid #d8b4fe; 
+  
+  /* Smooth transition matching the bouncy lift mechanics of the project cards */
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+}
+
+/* 1. The 3D Perspective Lift */
+.philosophy-card:hover {
+  /* Tilts backward and lifts toward the viewport */
+  transform: perspective(1000px) rotateX(4deg) rotateY(-2deg) scale(1.02);
+  box-shadow: -8px 12px 25px rgba(0, 0, 0, 0.06);
+  background-color: #faf5ff; /* Subtle pastel purple tint on hover */
+}
+
+/* 2. Changing Title Color on Hover */
+.philosophy-card:hover .card-title {
+  color: #9333ea;
+  transition: color 0.3s ease;
+}
+
+/* 3. The Glass Shimmer Layer */
+.philosophy-card::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: -150%; 
+  width: 50%; 
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 4. Trigger Shimmer Sequence on Hover */
+.philosophy-card:hover::before {
+  animation: philosophy-shine 0.7s forwards ease-in-out;
+}
+
+@keyframes philosophy-shine {
+  100% { left: 200%; }
+}
+
+/* Core Typography Rules (Keep unchanged or append) */
+.card-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.philosophy-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* --- THE CIRCULAR ARRANGEMENT CONTAINER --- */
+.personal-hobbies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hobbies-circle-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 350px; /* Gives the circles enough vertical space to form a ring */
+  margin-top: 1rem;
+}
+
+/* --- THE PERFECT CIRCLE BASE --- */
+.circle-wrapper {
+  position: absolute;
+  /* Soft, continuous bobbing animation */
+  animation: ambient-float 4s ease-in-out infinite alternate;
+}
+
+.floating-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%; /* Makes them perfect circles! */
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.5), 0 8px 25px rgba(0,0,0,0.05);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.circle-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  pointer-events: none; 
+}
+
+.circle-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+
+/* --- THE AMBIENT FLOATING KEYFRAMES --- */
+@keyframes ambient-float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* --- THE PASTEL COLOR THEMES --- */
+.theme-indigo { background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); color: #4f46e5; }
+.theme-emerald { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); color: #059669; }
+.theme-rose { background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%); color: #e11d48; }
+.theme-amber { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color: #d97706; }
+.theme-cyan { background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%); color: #0891b2; }
+
+/* --- DESKTOP POSITIONING (The 5-Point Ring) --- */
+.pos-top { top: 0; left: 50%; transform: translateX(-50%); }
+.pos-right { top: 30%; right: 5%; }
+.pos-bottom-right { bottom: 0; right: 15%; }
+.pos-bottom-left { bottom: 0; left: 15%; }
+.pos-left { top: 30%; left: 5%; }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .hobbies-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .hobbies-circle-container {
+    height: 300px;
+    max-width: 320px;
+  }
+  
+  .floating-circle {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .circle-icon { font-size: 1.5rem; }
+  .circle-name { font-size: 0.75rem; }
+  
+  /* Pulls the ring slightly tighter on small screens */
+  .pos-right { right: 0%; }
+  .pos-left { left: 0%; }
+}
+
+/* --- THE PARTICLE SYSTEM LOGIC --- */
+.floating-dots-container {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none; /* Ensures the dots NEVER block your mouse from the circles! */
+  z-index: 20; /* Places dots physically in front of the cards */
+}
+
+.particle-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particle-drift linear infinite alternate;
+}
+
+@keyframes particle-drift {
+  0% { 
+    transform: translateY(0) translateX(0) scale(1); 
+    opacity: 0.1; 
+  }
+  50% { 
+    opacity: 0.8; 
+    /* Pops up slightly in size midway through the flight */
+    transform: translateY(-40vh) translateX(30vw) scale(1.5); 
+  }
+  100% { 
+    /* Sweeps massively across the entire section */
+    transform: translateY(-80vh) translateX(60vw) scale(1); 
+    opacity: 0.1; 
+  }
+}

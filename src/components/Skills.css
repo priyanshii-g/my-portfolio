@@ -1,0 +1,289 @@
+/* Base Layout Styles */
+/* Base Layout Styles with Pastel Purple Background */
+.skills-section {
+  padding: 5rem 2rem; /* Added side padding so it looks great inside the colored box */
+  margin: 2rem 0; /* Gives it breathing room from the sections above and below */
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  background-color:#f5f3ff; /* A beautiful, soft pastel purple */
+  border-radius: 32px; /* Large, modern rounded corners */
+}
+
+.skills-header {
+  text-align: center;
+}
+
+.skills-header h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.skills-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- THE FLUID CARD EFFECT --- 
+*/
+.skill-card {
+  position: relative; 
+  overflow: hidden;   
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  
+  /* Increased duration to 0.4s and changed to a buttery 'ease-out' */
+  transition: transform 0.6s ease-out, box-shadow 0.6s ease-out, border-color 0.3s ease-out;
+}
+
+.skill-card:hover {
+  /* Increased the lift from -2px to -8px for a much more noticeable float */
+  transform: translateY(-50px);
+  
+  /* Increased the shadow slightly to match the higher elevation */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); 
+  
+  border-color: var(--card-glow); 
+}
+
+/* The actual flowing gradient layer */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0; /* Hidden until you hover */
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  /* This creates a soft circle of color that centers on your mouse coordinates */
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+    var(--card-glow), 
+    transparent 40%
+  );
+}
+
+/* Reveal the flow when the mouse enters the card */
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+/* Ensure the text and pills stay ABOVE the glowing background */
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  pointer-events: none; /* Lets the mouse trigger the card underneath smoothly */
+}
+
+.category-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* --- THE NEW PILL THEMES --- 
+*/
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  pointer-events: auto; /* Re-enables clicking/hovering on the pills themselves */
+}
+
+.skill-pill {
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease;
+  cursor: default;
+  background-color: var(--surface-color); /* Default white background for pure contrast */
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px);
+}
+
+/* Vibrant Pastel Borders and Text */
+.theme-cyan {
+  border: 1px solid #67e8f9;
+  color: #0891b2;
+}
+
+.theme-green {
+  border: 1px solid #86efac;
+  color: #16a34a;
+}
+
+.theme-yellow {
+  border: 1px solid #fde047;
+  color: #ca8a04;
+}
+
+/* New Pastel Pink Theme */
+.theme-pink {
+  border: 1px solid #f9a8d4;
+  color: #db2777; /* Deeper pink text so it remains readable */
+}
+
+/* --- THE BREAKPOINT --- */
+@media (min-width: 768px) {
+  .skills-section {
+    padding: 6rem 0;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}/* Base Layout Styles */
+.skills-section {
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.skills-header {
+  text-align: center;
+}
+
+.skills-header h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.skills-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- THE FLUID CARD EFFECT --- 
+*/
+.skill-card {
+  position: relative; /* Crucial for bounding the fluid glow */
+  overflow: hidden;   /* Keeps the glow inside the rounded corners */
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* The actual flowing gradient layer */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0; /* Hidden until you hover */
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  /* This creates a soft circle of color that centers on your mouse coordinates */
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+    var(--card-glow), 
+    transparent 40%
+  );
+}
+
+/* Reveal the flow when the mouse enters the card */
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+/* Ensure the text and pills stay ABOVE the glowing background */
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  pointer-events: none; /* Lets the mouse trigger the card underneath smoothly */
+}
+
+.category-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* --- THE NEW PILL THEMES --- 
+*/
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  pointer-events: auto; /* Re-enables clicking/hovering on the pills themselves */
+}
+
+.skill-pill {
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease;
+  cursor: default;
+  background-color: var(--surface-color); /* Default white background for pure contrast */
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px);
+}
+
+/* Vibrant Pastel Borders and Text */
+.theme-cyan {
+  border: 1px solid #67e8f9;
+  color: #0891b2;
+}
+
+.theme-green {
+  border: 1px solid #86efac;
+  color: #16a34a;
+}
+
+.theme-yellow {
+  border: 1px solid #fde047;
+  color: #ca8a04;
+}
+
+.theme-orange {
+  border: 1px solid #fdba74;
+  color: #ea580c;
+}
+
+/* --- THE BREAKPOINT --- */
+@media (min-width: 768px) {
+  .skills-section {
+    padding: 6rem 0;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
