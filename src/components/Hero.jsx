@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import profilePic from '../assets/profile.jpeg';
+import profilePic from '../assets/profile.webp';
 
 // --- THE TYPEWRITER & SPARKS COMPONENT ---
 const TypewriterWithSparks = ({ textToType }) => {
@@ -139,7 +139,13 @@ export default function Hero() {
       
       <div className="hero-image-container">
         <div className="image-placeholder">
-          <img className = "profile-picture" src={profilePic} alt="Priyanshi Garg - Profile" />
+          <img 
+            src={profilePic} 
+            alt="Priyanshi Garg - Profile" 
+            width="150" 
+            height="150"  
+            className = "profile-picture"
+          />
         </div>
       </div>
     </section>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './Projects.css';
+import { useScrollReveal } from '../useScrollReveal';
 
 export default function Projects() {
+  const sectionRef = useScrollReveal();
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -92,7 +94,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="projects-section" id="projects">
+    <section className="projects-section reveal-on-scroll" id="projects" ref={sectionRef}>
       {/* --- INJECT THE PARTICLES HERE --- */}
       <div className="floating-dots-container">
         {particles}

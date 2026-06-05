@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
 import './Education.css';
+import { useScrollReveal } from '../useScrollReveal';
 
 export default function Education() {
-  const sectionRef = useRef(null);
+  const scrollRef = useScrollReveal(); 
+  const gridRef = useRef(null); 
 
   const handleMouseMove = (e) => {
-    if (!sectionRef.current) return;
+    if (!gridRef.current) return; 
     
-    const cards = sectionRef.current.getElementsByClassName('info-card');
+    const cards = gridRef.current.getElementsByClassName('info-card');
     for (const card of cards) {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -51,13 +53,13 @@ export default function Education() {
   ];
 
   return (
-    <section className="education-section" id="education">
+    <section className="education-section reveal-on-scroll" id="education" ref={scrollRef}>
       <div className="education-header">
         <h2>Background & Achievements</h2>
         <p>My academic foundation, professional certifications, and community involvement.</p>
       </div>
 
-      <div className="education-grid" ref={sectionRef} onMouseMove={handleMouseMove}>
+      <div className="education-grid" ref={gridRef} onMouseMove={handleMouseMove}>
         
         <div className="education-column">
           <h3 className="column-title">Academic Journey</h3>
@@ -65,7 +67,6 @@ export default function Education() {
             {academics.map((item, index) => (
               
               <div key={index} className={`info-card ${item.theme}`}>
-                
                 <div className="card-border-glow"></div>
                 <div className="card-background-glow"></div>
                 
@@ -77,8 +78,8 @@ export default function Education() {
                   <p className="institution">{item.institution}</p>
                   <p className="duration">{item.duration}</p>
                 </div>
-
               </div>
+
             ))}
           </div>
         </div>

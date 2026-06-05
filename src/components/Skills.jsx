@@ -1,9 +1,9 @@
 import React from 'react';
 import './Skills.css';
+import { useScrollReveal } from '../useScrollReveal';
 
 export default function Skills() {
-  // Added unique pastel glow colors and themes for the new palette
-  // Added pastel pink for the 4th category
+  const sectionRef = useScrollReveal();
   const skillCategories = [
     {
       title: "Frontend & UI",
@@ -44,7 +44,7 @@ export default function Skills() {
   };
 
   return (
-    <section className="skills-section" id="skills">
+    <section className="skills-section reveal-on-scroll" id="skills" ref={sectionRef}>
       <div className="skills-header">
         <h2>Technical Arsenal</h2>
         <p>A balanced stack across full-stack development, systems logic, and machine learning.</p>

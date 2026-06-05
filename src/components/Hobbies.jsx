@@ -1,5 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import './Hobbies.css';
+import { useScrollReveal } from '../useScrollReveal';
 
 // --- THE MAGNETIC FLOATING CIRCLE COMPONENT ---
 const FloatingCircle = ({ name, icon, theme, posClass, delay }) => {
@@ -39,6 +40,7 @@ const FloatingCircle = ({ name, icon, theme, posClass, delay }) => {
 
 // --- YOUR MAIN HOBBIES COMPONENT ---
 export default function Hobbies() {
+  const sectionRef = useScrollReveal();
   const hobbies = [
     { name: "Meditation", icon: "🧘‍♀️", theme: "theme-indigo", posClass: "pos-top", delay: "0s" },
     { name: "Yoga", icon: "🌿", theme: "theme-emerald", posClass: "pos-right", delay: "-2s" },
@@ -79,7 +81,7 @@ export default function Hobbies() {
   }, []);
 
   return (
-    <section className="hobbies-section" id="about">
+    <section className="hobbies-section reveal-on-scroll" id="about" ref={sectionRef}>
       
       {/* --- NEW: The Dots Container --- */}
       <div className="floating-dots-container">
